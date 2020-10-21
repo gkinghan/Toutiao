@@ -41,13 +41,21 @@ export default {
   methods: {
     login () {
       if (!this.form.agree) {
-        alert('请同意用户许可')
+        // alert('请同意用户许可')
+        this.$message({
+          message: '请同意用户许可',
+          type: 'error',
+          showClose: true
+        })
         return
       }
       this.$http.post('/mp/v1_0/authorizations', this.form).then(res => {
-        console.log('登录成功', res)
+        // console.log('登录成功', res)
+        this.$message.success('登录成功')
       }).catch(err => {
-        console.log('登陆失败', err)
+        this.$message.error('登陆失败，手机号或者验证码错误')
+        console.log(err)
+        // console.log('登陆失败', err)
       })
     }
   }
