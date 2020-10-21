@@ -35,6 +35,16 @@ export default {
         mobile: '13911111111',
         code: '246810',
         agree: false
+      },
+      rules: {
+        mobile: [
+          { required: true, message: '请输入手机号', trigger: ['blur', 'change'] },
+          { pattern: /^1\d{10}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }
+        ],
+        code: [
+          { required: true, message: '请输入验证码', trigger: ['blur', 'change'] },
+          { pattern: /^\d{6}$/, message: '请输入正确的验证码', trigger: ['blur', 'change'] }
+        ]
       }
     }
   },
